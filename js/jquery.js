@@ -5,12 +5,12 @@ if(k&&j[k]&&(e||j[k].data)||void 0!==d||"string"!=typeof b)return k||(k=i?a[h]=c
 
 var $el, $ps, $up, totalHeight;
 
-$("#about .button").click(function() {
+$("#about .read-more").click(function() {
       
   totalHeight = 0
 
-  $el = $(this);
-  $p  = $el.parent();
+  
+  $p  = $(this);
   $up = $p.parent();
   $ps = $up.find("p:not('.read-more')");
   

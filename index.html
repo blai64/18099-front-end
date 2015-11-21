@@ -73,7 +73,7 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2 expand">
                     <p id="description">Buggy is a race held annually at Carnegie Mellon since 1920 where teams of 5 athletes (the pushers) push an un-motorized vehicle (a buggy) containing a driver around a 0.84 mile course in a relay format where the vehicle serves as the baton. Roughly half of the course is uphill, during which the pushers run and shove the buggy uphill. During the other - downhill - half, drivers are on their own to navigate tight turns at speeds of up to 35mph. Over 400 Carnegie Mellon students (both men and women, mostly undergrads) per year participate as part of one of the 12-15 organizations - about half of which are greek. Teams are generally broken down into three major roles: pushers, drivers, and mechanics. Pushers train on and off the course to improve their times and their exchanges, drivers gain experience navigating the course during the weekend "free roll" practices, and mechanics do the engineering, designing and building new buggies from the raw materials and then maintaining and tuning them to be as fast as possible.</p>
-                    <p class="read-more"><a href="#" class="button">Read More</a></p>
+                    <p class="read-more"></p>
                 </div>
 
             </div>
@@ -85,7 +85,7 @@
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" id="poi-carousel" role="listbox">
-    <!-- <div class="item active">
+    <div class="item active">
       <img src="img/buggy1.jpg" alt="..." id="img1">
       <div class="carousel-caption">
       </div>
@@ -99,7 +99,7 @@
       <img src="img/buggy3.jpeg" alt="..." id="img3">
       <div class="carousel-caption">
       </div>
-    </div> -->
+    </div>
   </div>
 
   <!-- Controls -->
@@ -127,19 +127,13 @@
                     <div class="footer-col col-md-4">
                         <ul class="list-inline">
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
+                                <a href="#" class="btn-social btn-outline">Race</a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                                <a href="#" class="btn-social btn-outline">Buggy</a>
                             </li>
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
+                                <a href="#" class="btn-social btn-outline">Carnival</a>
                             </li>
                         </ul>
                     </div>
@@ -181,9 +175,8 @@
                 interval: false
                 }); 
         
-            $.get("http://52.27.55.252:5000/test/cmu-campus-app/", function(response, status){
+            /*$.get("http://52.27.55.252:5000/test/cmu-campus-app/", function(response, status){
                 for (i = 0; i < response["data"][0]["poi_data"]["images"].length; i++){
-                    console.log(response.length);
                     var toAdd = '<div class="item';
                     if (i == 0){
                         toAdd += ' active';
@@ -191,11 +184,10 @@
                     toAdd += '"><img src="';
                     toAdd += response["data"][0]["poi_data"]["images"][i];
                     toAdd += '"><div class="carousel-caption"></div></div>';
-                    console.log(toAdd);
                     $("#poi-carousel").append(toAdd);
                 }
                 $("#description").text(response["data"][0]["poi_data"]["description"]);
-            });
+            });*/
         });  
     </script>  
 
