@@ -1,5 +1,6 @@
+/*
 #poi-iw {
-    border-right: 10px solid red;
+    border-right: 10px solid #005531;
 }
 
 
@@ -11,4 +12,55 @@
    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
    border: 1px solid rgba(72, 181, 233, 0.6);
    border-radius: 2px 2px 0 0;
+}
+*/
+
+p {
+    font-family: "Helvetica Neue";
+}
+
+h1 {
+    font-family: "Helvetica Neue";
+}
+
+.VR {
+    /*float: right;
+    width: 70%;
+    */
+    width: 14%;
+    /*float: left;*/
+    margin-left: 5px;
+    /*display: inline-block;*/
+    float: left;
+    margin-top: 22px;
+}
+
+.readmore {
+    width: 53px;
+    height: 17px;
+    background: #FFF;
+    border: 1px solid;
+    border-color: #E52C5F;
+    border-radius: 3px;
+    color: #E52C5F;
+    padding-left: 3px;
+    padding-right: 1px;
+    padding-top: 3px;
+    font-size: 80%;
+    /*display: inline-block;*/
+    /*float:left;*/
+    /*display: inline-block;*/
+    margin-top: 22px;
+    margin-left: 50px;
+    float: left;
+}
+
+.modaltitle {
+    float: left;
+}
+
+.modalbody {
+    float: left;
+    text-align: center;
+    margin-bottom: 10px;
 }

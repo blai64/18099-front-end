@@ -32,7 +32,7 @@ function initMap() {
     center: cut
   });
 
-  var contentString = '<div id="poi-iw">'+
+  /*var contentString = '<div id="poi-iw">'+
       '<div id="siteNotice">'+
       '</div>'+
       '<h1 id="firstHeading" class="firstHeading">The Cut</h1>'+
@@ -40,6 +40,12 @@ function initMap() {
       '<p>The cut is where CMU kiddies go to play.</p>'+
       '</div>'+
       '</div>';
+      */
+  
+  var contentString = '<div class=modaltitle><h1>Hunt Libary</h1></div>'+
+      '<div class="readmore">Read More</div>'+
+      '<img class="VR" src="Icons/VR.svg">'+
+      '<div class=modalbody><p>An undersized but slowly improving facility for students at CMU</p></div>'
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString
@@ -55,12 +61,13 @@ function initMap() {
     // The anchor for this image is the base of the flagpole at (0, 32).
     anchor: new google.maps.Point(0, 32)
   };
-
+    
 
   var marker = new google.maps.Marker({
     position: cut,
     map: map,
-    title: "The Cut"
+    title: "Hunt Library",
+    icon: 'Icons/POIflag.svg'
   });
   
   marker.addListener('click', function() {
