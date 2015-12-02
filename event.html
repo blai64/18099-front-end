@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,7 +52,7 @@
                         <p class="host">Scotty Labs</p>
                     </div>
                     <div class="share">
-                        <img src="img/share_icon.png" alt="" id="share" width="14px" height="18px">
+                        <img src="img/icons/share_icon.png" alt="" id="share" width="14px" height="18px">
                     </div>
                 </div>
             </div>
@@ -64,13 +62,13 @@
     <div class="container details">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 date">
-                <img src="img/time_icon.png" alt="" id="time" width="14px" height="14px">
+                <img src="img/icons/time_icon.png" alt="" id="time" width="14px" height="14px">
                 <span id="time">Saturday, November 7 at 2:00pm-7:00pm</span>
             </div>
         </div>    
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 location">
-                <img src="img/location_icon.png" alt="" id="location" width="11px" height="14px">
+                <img src="img/icons/location_icon.png" alt="" id="location" width="11px" height="14px">
                 <span id="location">Wean Cluster 4003</span>
             </div>
         </div>
@@ -111,20 +109,12 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="js/freelancer.js"></script>
 
@@ -132,7 +122,7 @@
 
     <script>  
         $(document).ready(function() {  
-            $.get("http://52.27.55.252:5000/cmu-campus-app/pois/?event_id=1&", function(response, status){
+            $.get("http://52.27.55.252:5000/cmu-campus-app/dummy-event/", function(response, status){
                 $("#description").text(response["data"][0]["event_data"]["description"]);
                 $("#location").text(response["data"][0]["event_data"]["location"]["name"]);
                 $("#location").text(response["data"][0]["event_data"]["startDateTime"]);
