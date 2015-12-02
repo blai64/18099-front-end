@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1>WebDevWeekend</h1>
+                        <h1 id="header-name"></h1>
                         <p class="host">Scotty Labs</p>
                     </div>
                     <div class="share">
@@ -65,13 +65,13 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 date">
                 <img src="img/time_icon.png" alt="" id="time" width="14px" height="14px">
-                <span>Saturday, November 7 at 2:00pm-7:00pm</span>
+                <span id="time">Saturday, November 7 at 2:00pm-7:00pm</span>
             </div>
         </div>    
         <div class="row">
             <div class="col-lg-4 col-lg-offset-2 location">
                 <img src="img/location_icon.png" alt="" id="location" width="11px" height="14px">
-                <span>Wean Cluster 4003</span>
+                <span id="location">Wean Cluster 4003</span>
             </div>
         </div>
 
@@ -82,7 +82,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2 expand">
-                    <p id="description">Web Dev Weekend is a series of lectures, workshops, and exercises that introduce you to the fundamentals of web development. If you want to make websites outside of the classroom, get a head start on later electives, or attend hackathons, Web Dev Weekend will give you the foundational knowledge you need to get started.</p>
+                    <p id="description"></p>
                     <p class="read-more"></p>
                 </div>
 
@@ -129,6 +129,22 @@
     <script src="js/freelancer.js"></script>
 
     <script src="js/jquery.mobile.custom.min.js"></script>
+
+    <script>  
+        $(document).ready(function() {  
+            $.get("http://52.27.55.252:5000/cmu-campus-app/pois/?event_id=1&", function(response, status){
+                $("#description").text(response["data"][0]["event_data"]["description"]);
+                $("#location").text(response["data"][0]["event_data"]["location"]["name"]);
+                $("#location").text(response["data"][0]["event_data"]["startDateTime"]);
+                $("#header-name").text(response["data"][0]["event_data"]["name"]);
+                /*$("#header-container").css(
+                    {"background-image" : "url(" + response["data"][0]["poi_data"]["heroImage"] + ")", 
+                     "background-size": "100% auto", 
+                     "background-repeat": "no-repeat" });*/
+            });
+
+        });  
+    </script>  
 
 </body>
 
