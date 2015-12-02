@@ -19,27 +19,82 @@
   </head>
   <body>
     <div id="map"></div>
+    <script src="js/jquery.js"></script>
     <script>
 
 // This example displays a marker at the center of Australia.
 // When the user clicks the marker, an info window opens.
 
 function initMap() {
-
   var cut = {lat: 40.442978,  lng: -79.943079};
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 15,
     center: cut
   });
 
-  var contentString = '<div id="poi-iw">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h1 id="firstHeading" class="firstHeading">The Cut</h1>'+
-      '<div id="bodyContent">'+
-      '<p>The cut is where CMU kiddies go to play.</p>'+
-      '</div>'+
-      '</div>';
+  var infowindow = new google.maps.InfoWindow();
+
+  var image = new google.maps.MarkerImage(
+    'img/icons/POIFlag.svg',
+    null,
+    null,
+    null,
+    new google.maps.Size(20, 32)
+  );
+  var poi, loc, contentString, marker; 
+  var i, j;
+
+  $.get("http://52.27.55.252:5000/cmu-campus-app/dummy-map/", function(response, status){
+    for (i = 0; i < response["pois"].length + response["events"].length; i++){
+      if (i >= response["pois"].length){
+        j = i - response["pois"].length;
+      }
+      else 
+        j = i;
+
+      poi = response["pois"][j];
+
+      loc = { lat : parseFloat(poi["location"]["lat"]),
+                  lng : parseFloat(poi["location"]["longi"])}
+      contentString = '<div class=modaltitle><h1>' + poi["name"] + '</h1></div>'+
+        '<div class="readmore">Read More</div>'+
+        '<img class="VR" src="img/icons/VR.svg">'+
+        '<div class=modalbody><p>'+ poi["description"] + '</p></div>';
+
+      marker = new google.maps.Marker({
+        position: loc,
+        map: map,
+        title: poi["name"],
+        icon: image
+      });
+
+      bindInfoWindow(marker, map, infowindow, contentString);
+
+    }
+
+    /*google.maps.event.addListener(infowindow, 'domready', function() {
+       var iwOuter = $('.gm-style-iw');
+       var iwBackground = iwOuter.prev();
+
+       // Remove the background shadow DIV
+       iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+
+       // Remove the white background DIV
+       iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+
+    });*/
+  });
+
+  /*var cut = {lat: 40.442978,  lng: -79.943079};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: cut
+  });
+  
+  var contentString = '<div class=modaltitle><h1>Hunt Libary</h1></div>'+
+      '<div class="readmore">Read More</div>'+
+      '<img class="VR" src="img/icons/VR.svg">'+
+      '<div class=modalbody><p>An undersized but slowly improving facility for students at CMU</p></div>'
 
   var infowindow = new google.maps.InfoWindow({
     content: contentString
@@ -55,12 +110,13 @@ function initMap() {
     // The anchor for this image is the base of the flagpole at (0, 32).
     anchor: new google.maps.Point(0, 32)
   };
-
+    
 
   var marker = new google.maps.Marker({
     position: cut,
     map: map,
-    title: "The Cut"
+    title: "Hunt Library",
+    icon: 'img/icons/POIFlag.svg'
   });
   
   marker.addListener('click', function() {
@@ -71,11 +127,7 @@ function initMap() {
 
    // Reference to the DIV which receives the contents of the infowindow using jQuery
    var iwOuter = $('.gm-style-iw');
-
-   /* The DIV we want to change is above the .gm-style-iw DIV.
-    * So, we use jQuery and create a iwBackground variable,
-    * and took advantage of the existing reference to .gm-style-iw for the previous DIV with .prev().
-    */
+    
    var iwBackground = iwOuter.prev();
 
    // Remove the background shadow DIV
@@ -84,9 +136,15 @@ function initMap() {
    // Remove the white background DIV
    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
 
-});
+});*/
 
+}
 
+function bindInfoWindow(marker, map, infowindow, description) {
+    marker.addListener('click', function() {
+        infowindow.setContent(description);
+        infowindow.open(map, this);
+    });
 }
 
     </script>
