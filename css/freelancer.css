@@ -40,6 +40,19 @@ p.small {
     position: relative;
     display: inline-block;
 }
+.date{
+padding: 2px;
+margin: 5px;
+margin-right: 20px;
+border-radius: 10px;
+border-style: solid;
+border-color: white;
+border-width: 3px;
+width: 50px;
+height: 50px;
+float: left;
+}
+
 .date .location{
 padding: 2px;
 margin: 5px;
