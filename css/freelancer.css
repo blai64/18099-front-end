@@ -36,10 +36,17 @@ p.small {
     font-size: 18px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.share {
+/* 
+.header-info {
     position: relative;
-    display: inline-block;
 }
+#share {
+    position:absolute;
+    bottom: 0;
+    float: right;
+} */
+
+
 .feature-date{
 padding: 2px;
 margin: 5px;
