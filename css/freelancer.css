@@ -78,6 +78,53 @@ float: left;
     color: #313131;
     font-size: 14px;
 }
+
+ul {
+    list-style-position:inside;
+    margin:0;
+    padding:0;
+}
+li {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+li:nth-child(even) { 
+    background: #f0f0f0;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+ }
+li:nth-child(odd) { 
+    background: white;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: -20px;
+    margin-bottom: -20px;
+
+ }
+#list_icon {
+    margin-top: 10px;
+    float: left;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+#list_name {
+    padding-top: 10px;
+    font-size: 20px;
+    width: 60%;
+    height: auto;
+}
+#list_datetime {
+    padding-top: 10px;
+    font-size: 14px;
+    width: 40%;
+    height: auto;
+    float: right;
+}
+#list_description {
+    clear: both;
+    font-size: 14px;
+}
 a,
 a:hover,
 a:focus,
