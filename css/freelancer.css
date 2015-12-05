@@ -36,7 +36,7 @@ p.small {
     font-size: 18px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
+/* 
 .header-info {
     position: relative;
 }
@@ -44,7 +44,7 @@ p.small {
     position:absolute;
     bottom: 0;
     float: right;
-}
+} */
 
 
 .feature-date{

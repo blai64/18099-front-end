@@ -50,12 +50,21 @@
                 <div class="col-lg-12 header-info">
                     <div class="intro-text" >
                         <h1 id="header-name"></h1>
-                        <p id="host"></p>
-                    </div>
-                    <div id="share" class="pull-right">
-                        <img src="img/shareWhite.svg" alt="" width="14px" height="18px">
                     </div>
                 </div>
+            </div>
+            <div class="row">
+                
+                    
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="text-align:left;">
+                            <p id="host"></p>    
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"  style="text-align:right;">
+                            <img src="img/shareWhite.svg" alt="" width="14px" height="18px">
+                        </div>  
+
+                
             </div>
         </div>
     </header>
@@ -82,7 +91,6 @@
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2 expand">
                     <p id="description"></p>
-                    <p class="read-more"></p>
                 </div>
 
             </div>
@@ -123,7 +131,7 @@
 
     <script>  
         $(document).ready(function() {  
-            $.get("http://52.27.55.252:5000/cmu-campus-app/events/?event_id=1&", function(response, status){
+            $.get("http://52.27.55.252:5000/cmu-campus-app/events/?event_id=2&", function(response, status){
                 $("#description").text(response["data"][0]["event_data"]["description"]);
                 $("#location-info").text(response["data"][0]["event_data"]["location"]["name"]);
                 $("#time-info").text(response["data"][0]["event_data"]["startTime"]);
