@@ -1,5 +1,5 @@
 <$php
-    $event_id = $_GET["name"];
+    $poi_id = $_GET["poi_id"];
 $>
 
 <html lang="en">
@@ -33,8 +33,6 @@ $>
 </head>
 
 <body id="page-top" class="index">
-
-
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -46,9 +44,7 @@ $>
         </div>
         <!-- /.container-fluid -->
     </nav>
-<?php 
-    echo $poi_id; 
-$>
+
     <!-- Header -->
     <header>
         <div class="container" id="header-container">
@@ -179,7 +175,7 @@ $>
 
             $('.carousel').carousel({
                 interval: false
-                }); 
+                });
         
             $.get("http://52.27.55.252:5000/cmu-campus-app/pois/?poi_id=1&", function(response, status){
                 for (i = 0; i < response["data"][0]["poi_data"]["images"].length; i++){
