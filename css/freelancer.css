@@ -199,6 +199,35 @@ header {
     color: #fff;
     background: #18bc9c;
 }
+header a{
+    color: #fff;
+    text-decoration: none;
+    background-color: none;
+}
+
+header a:hover{
+    color: #fff;
+}
+
+header a:active{
+    color: #fff;
+}
+header a:focus{
+    color: #fff;
+}
+
+header a:visited{
+    color: #fff;
+}
+header a:link{
+    color: #fff;
+}
+
+
+
+
+
+
 
 header .container {
     padding-top: 100px;

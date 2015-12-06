@@ -131,7 +131,10 @@
 
     <script>  
         $(document).ready(function() {  
-            $.get("http://52.27.55.252:5000/cmu-campus-app/events/?event_id=2&", function(response, status){
+            var event_id = getParameterByName('event_id').toString();
+            if (event_id == "")
+                event_id = "2";
+            $.get("http://52.27.55.252:5000/cmu-campus-app/events/?event_id=" + event_id + "&", function(response, status){
                 $("#description").text(response["data"][0]["event_data"]["description"]);
                 $("#location-info").text(response["data"][0]["event_data"]["location"]["name"]);
                 $("#time-info").text(response["data"][0]["event_data"]["startTime"]);

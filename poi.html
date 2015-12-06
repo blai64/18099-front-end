@@ -175,8 +175,13 @@
             $('.carousel').carousel({
                 interval: false
                 }); 
-            var poi_id = getParameterByName('poi_id');
-            $.get("http://52.27.55.252:5000/cmu-campus-app/pois/?poi_id=1&", function(response, status){
+
+            var poi_id = getParameterByName('poi_id').toString();
+            
+            if (poi_id == "")
+                poi_id = "1";
+
+            $.get("http://52.27.55.252:5000/cmu-campus-app/pois/?poi_id=" + poi_id + "&", function(response, status){
                 for (i = 0; i < response["data"][0]["poi_data"]["images"].length; i++){
                     var toAdd = '<div class="item';
                     if (i == 0){

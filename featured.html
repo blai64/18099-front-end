@@ -26,82 +26,9 @@
 
 <body id="page-top" class="index">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-            </div>
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
+    <!-- jQuery will populaate with events -->
     <div id="featured-wrapper">
-        
     </div>
-
-    <!-- Featured 1 -->
-    <header>
-        <div class="container" style="background-image: url(img/buggy_top.jpg); background-size:100% auto; background-repeat: no-repeat;">
-            <div class="row gradient">
-                <div class="col-lg-12">
-                    <div class="feature-date">Nov 20</div>
-                    <div class="intro-text">
-                        <h3>Buggy Rolls</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End of Featured 1 -->
-
-    <!-- Featured 2 -->
-    <header>
-        <div class="container" style="background-image: url(img/buggy_top.jpg); background-size:100% auto; background-repeat: no-repeat;">
-            <div class="row gradient">
-                <div class="col-lg-12">
-                    <div class="feature-date">Nov 20</div>
-                    <div class="intro-text">
-                        <h3>Buggy Rolls</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End of Featured 2 -->
-
-    <!-- Featured 3 -->
-    <header>
-        <div class="container" style="background-image: url(img/buggy_top.jpg); background-size:100% auto; background-repeat: no-repeat;">
-            <div class="row gradient">
-                <div class="col-lg-12">
-                    <div class="feature-date">Nov 20</div>
-                    <div class="intro-text">
-                        <h3>Buggy Rolls</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End of Featured 3 -->
-
-    <!-- Featured 4 -->
-    <header>
-        <div class="container" style="background-image: url(img/buggy_top.jpg); background-size:100% auto; background-repeat: no-repeat;">
-            <div class="row gradient">
-                <div class="col-lg-12">
-                    <div class="feature-date">Nov 20</div>
-                    <div class="intro-text">
-                        <h3>Buggy Rolls</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- End of Featured 4 -->
-
-
-
     
 </div>
     <!-- jQuery -->
@@ -129,14 +56,16 @@
             $.get("http://52.27.55.252:5000/cmu-campus-app/featured/", function(response, status){
                 for (i = 0; i < response["events"].length; i++){
                     var e = response["events"][i];
-                    var toAdd = '<header> <div class="container" style="background-image: url(';
+                    var toAdd = '<header><a href="';
+                    toAdd += 'http://52.27.55.252:5000/event.html?event_id=' + e["event_id"] +'&';
+                    toAdd += '"><div class="container" style="background-image: url(';
                     toAdd += e["event_data"]["heroImage"]; 
                     toAdd += '); background-size:100% auto; background-repeat: no-repeat;"><div class="row gradient">';
                     toAdd += '<div class="col-lg-12"><div class="feature-date">';
-                    toAdd += e["event_data"]["startTime"];
+                    toAdd += e["event_data"]["date"];
                     toAdd += '</div><div class="intro-text"><h3>';
                     toAdd += e["event_data"]["name"];
-                    toAdd += '</h3></div></div></div></div></header>'
+                    toAdd += '</h3></div></div></div></div></a></header>'
                     $("#featured-wrapper").append(toAdd);
                 }
                 
