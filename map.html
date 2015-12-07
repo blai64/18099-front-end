@@ -58,7 +58,7 @@ function initMap() {
                   lng : parseFloat(poi["location"]["longi"])}
       contentString = '<div class=modaltitle><h1>' + poi["name"] + '</h1></div>'+
         '<div class="readmore">Read More</div>'+
-        '<img class="VR" src="img/icons/VR.svg">'+
+        '<a href="' + poi["vr"] + '"><img class="VR" src="img/icons/VR.svg"></a>'+
         '<div class=modalbody><p>'+ poi["description"] + '</p></div>';
 
       marker = new google.maps.Marker({
