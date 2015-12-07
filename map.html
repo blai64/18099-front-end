@@ -34,42 +34,70 @@ function initMap() {
 
   var infowindow = new google.maps.InfoWindow();
 
-  var image = new google.maps.MarkerImage(
+  var poi_image = new google.maps.MarkerImage(
     'img/icons/POIFlag.svg',
     null,
     null,
     null,
     new google.maps.Size(20, 32)
   );
-  var poi, loc, contentString, marker; 
+  var event_image = new google.maps.MarkerImage(
+    'img/icons/EventTicket.svg',
+    null,
+    null,
+    null,
+    new google.maps.Size(20, 32)
+  );
+
+
+  var poi, ev, loc, contentString, marker; 
   var i, j;
 
-  $.get("http://52.27.55.252:5000/cmu-campus-app/dummy-map/", function(response, status){
-    for (i = 0; i < response["pois"].length + response["events"].length; i++){
-      if (i >= response["pois"].length){
-        j = i - response["pois"].length;
+  $.get("http://52.27.55.252:5000/cmu-campus-app/map/", function(response, status){
+    var poi_len = response["pois"].length;
+    var event_len = response["events"].length;
+
+
+    for (i = 0; i < poi_len + event_len; i++){
+      /*case on whether we are currently indexing events or poi*/
+      if (i >= poi_len){
+        j = i - poi_len;
+        ev = response["events"][j];
+        loc = { lat : parseFloat(ev["location"]["lat"]),
+                    lng : parseFloat(ev["location"]["longi"])}
+        contentString = '<div class=modaltitle><h1>' + ev["name"] + '</h1></div>'+
+          '<a href="http://52.27.55.252/18099-front-end/event.html?event_id='+ev["event_id"]+'&'+ 
+          '"><div class="readmore">Read More</div></a>' 
+          '<img class="VR" src="img/icons/VR.svg">'+
+          '<div class=modalbody><p>'+ ev["description"] + '</p></div>';
+        marker = new google.maps.Marker({
+          position: loc,
+          map: map,
+          title: ev["name"],
+          icon: event_image
+        });
+        bindInfoWindow(marker, map, infowindow, contentString);
+
+
       }
-      else 
+      else {
         j = i;
-
-      poi = response["pois"][j];
-
-      loc = { lat : parseFloat(poi["location"]["lat"]),
-                  lng : parseFloat(poi["location"]["longi"])}
-      contentString = '<div class=modaltitle><h1>' + poi["name"] + '</h1></div>'+
-        '<div class="readmore">Read More</div>'+
-        '<a href="' + poi["vr"] + '"><img class="VR" src="img/icons/VR.svg"></a>'+
-        '<div class=modalbody><p>'+ poi["description"] + '</p></div>';
-
-      marker = new google.maps.Marker({
-        position: loc,
-        map: map,
-        title: poi["name"],
-        icon: image
-      });
-
-      bindInfoWindow(marker, map, infowindow, contentString);
-
+        poi = response["pois"][j];
+        loc = { lat : parseFloat(poi["location"]["lat"]),
+                    lng : parseFloat(poi["location"]["longi"])}
+        contentString = '<div class=modaltitle><h1>' + poi["name"] + '</h1></div>'+
+          '<a href="http://52.27.55.252/18099-front-end/poi.html?poi_id='+poi["poi_id"]+'&'+ 
+          '"><div class="readmore">Read More</div></a>' +
+          '<a href="' + poi["vr"] + '"><img class="VR" src="img/icons/VR.svg"></a>'+
+          '<div class=modalbody><p>'+ poi["description"] + '</p></div>';
+        marker = new google.maps.Marker({
+          position: loc,
+          map: map,
+          title: poi["name"],
+          icon: poi_image
+        });
+        bindInfoWindow(marker, map, infowindow, contentString);
+      } 
     }
 
     /*google.maps.event.addListener(infowindow, 'domready', function() {
@@ -141,14 +169,20 @@ function initMap() {
 }
 
 function bindInfoWindow(marker, map, infowindow, description) {
-    marker.addListener('click', function() {
-        infowindow.setContent(description);
-        infowindow.open(map, this);
-    });
+  marker.addListener('click', function() {
+      infowindow.setContent(description);
+      infowindow.open(map, this);
+  });
 }
 
+
+function loadScript() {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+  script.src = "http://maps.googleapis.com/maps/api/js?key=AIzaSyDyziVLzfgop9wIVlqK2xCKqMkU6JUK-Wk&signed_in=true&callback=initMap";
+  document.body.appendChild(script);
+}
+window.onload = loadScript;
     </script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyziVLzfgop9wIVlqK2xCKqMkU6JUK-Wk&signed_in=true&callback=initMap"></script>
   </body>
 </html>
