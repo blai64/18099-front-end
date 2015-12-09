@@ -26,45 +26,35 @@
 
 <body id="page-top" class="index">
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-            </div>
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
     <ul id="all" style="list-style-type:none">
-        <li id="">
-            <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="22" width="22">
-            <p id="list_datetime">Nov. 20, 5:00am</p>
-            <h1 id="list_name">Buggy</h1>
-            
-            <p id="list_description">Lorem ipsum description of the event</p>
-        </li
-        ><li id="">
-            <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="22" width="22">
-            <p id="list_datetime">Nov. 20, 5:00am</p>
-            <h1 id="list_name">Buggy</h1>
-            
-            <p id="list_description">Lorem ipsum description of the event</p>
-        </li
-        ><li id="">
-            <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="22" width="22">
-            <p id="list_datetime">Nov. 20, 5:00am</p>
-            <h1 id="list_name">Buggy</h1>
-            
-            <p id="list_description">Lorem ipsum description of the event</p>
-        </li>
-        <li id="">
-            <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="24" width="24">
-            <p id="list_datetime">Nov. 20, 5:00am</p>
-            <h1 id="list_name">Buggy</h1>
-            
-            <p id="list_description">Lorem ipsum description of the event</p>
-        </li>
+<!--         <li id="">
+    <img id="list_icon" src="img/icons/EventTicket.svg" alt="ticket" height="22" width="22">
+    <p id="list_datetime">Nov. 20, 5:00am</p>
+    <h1 id="list_name">Buggy</h1>
+    
+    <p id="list_description">Lorem ipsum description of the event</p>
+</li
+><li id="">
+    <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="22" width="22">
+    <p id="list_datetime">Nov. 20, 5:00am</p>
+    <h1 id="list_name">Buggy</h1>
+    
+    <p id="list_description">Lorem ipsum description of the event</p>
+</li
+><li id="">
+    <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="22" width="22">
+    <p id="list_datetime">Nov. 20, 5:00am</p>
+    <h1 id="list_name">Buggy</h1>
+    
+    <p id="list_description">Lorem ipsum description of the event</p>
+</li>
+<li id="">
+    <img id="list_icon" src="img/ticket_icon.png" alt="ticket" height="24" width="24">
+    <p id="list_datetime">Nov. 20, 5:00am</p>
+    <h1 id="list_name">Buggy</h1>
+    
+    <p id="list_description">Lorem ipsum description of the event</p>
+</li> -->
     </ul>
     
 </div>
@@ -90,16 +80,21 @@
 
     <script>  
         $(document).ready(function() {  
-            $("#carousel-example-generic").swiperight(function() {  
-                $("#carousel-example-generic").carousel('prev');  
-             });  
-            $("#carousel-example-generic").swipeleft(function() {  
-                $("#carousel-example-generic").carousel('next');  
-            });  
+            $.get("http://52.27.55.252:5000/cmu-campus-app/featured/", function(response, status){
+                for (i = 0; i < response["events"].length; i++){
+                    var e = response["events"][i];
+                    var toAdd = '<li id=""><a href="';
+                    toAdd += 'http://52.27.55.252/18099-front-end/event.html?event_id=' + e["event_id"] +'&';
+                    toAdd += '"><img id="list_icon" src="img/icons/EventTicket.svg" alt="ticket" height="22" width="22">';
+                    toAdd +=  '<p id="list_datetime">' + e["event_data"]["date"] + ', ' +  e["event_data"]["startTime"] + '</p>';
+                    toAdd +=  '<h1 id="list_name">' + e["event_data"]["name"] + '</h1>';
+                    toAdd +=  '<p id="list_description">Lorem ipsum description of the event</p><a></li>';
 
-            $('.carousel').carousel({
-                interval: false
-                }); 
+                    $("#all").append(toAdd);
+                }
+                
+            });  
+            
         });  
     </script>  
 

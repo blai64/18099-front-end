@@ -86,22 +86,23 @@ float: left;
     font-size: 14px;
 }
 
-ul {
+#all {
     list-style-position:inside;
     margin:0;
     padding:0;
 }
-li {
+
+#all li {
     padding-left: 30px;
     padding-right: 30px;
 }
-li:nth-child(even) { 
+#all li:nth-child(even) { 
     background: #f0f0f0;
     padding-top: 0px;
     padding-bottom: 0px;
 
  }
-li:nth-child(odd) { 
+#all li:nth-child(odd) { 
     background: white;
     padding-top: 0px;
     padding-bottom: 0px;
@@ -205,7 +206,7 @@ header a{
     background-color: none;
 }
 
-header a:hover{
+header, a:hover{
     color: #fff;
 }
 
@@ -224,7 +225,9 @@ header a:link{
 }
 
 
-
+#all a:active,a:focus,a:visited,a:link{
+    color:#000000;
+}
 
 
 
