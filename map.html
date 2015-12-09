@@ -65,10 +65,10 @@ function initMap() {
         ev = response["events"][j];
         loc = { lat : parseFloat(ev["location"]["lat"]),
                     lng : parseFloat(ev["location"]["longi"])}
-        contentString = '<div class="modaltitle"><h2>' + ev["name"] + '</h2></div>'+
+        contentString = '<div class="modaltitle"><h1>' + ev["name"] + '</h1></div>'+
           '<a href="http://52.27.55.252/18099-front-end/event.html?event_id='+ev["event_id"]+'&'+ 
-          '"><div class="readmore">Read More</div></a>' + 
-          /*'<img class="VR" src="img/icons/VR.svg">'+*/
+          '"><div class="readmore">Read More</div></a>' 
+          '<img class="VR" src="img/icons/VR.svg">'+
           '<div class="modalbody"><p>'+ ev["description"] + '</p></div>';
         marker = new google.maps.Marker({
           position: loc,
@@ -85,7 +85,7 @@ function initMap() {
         poi = response["pois"][j];
         loc = { lat : parseFloat(poi["location"]["lat"]),
                     lng : parseFloat(poi["location"]["longi"])}
-        contentString = '<div class="modaltitle"><h2>' + poi["name"] + '</h2></div>'+
+        contentString = '<div class="modaltitle"><h1>' + poi["name"] + '</h1></div>'+
           '<a href="http://52.27.55.252/18099-front-end/poi.html?poi_id='+poi["poi_id"]+'&'+ 
           '"><div class="readmore">Read More</div></a>' +
           '<a href="' + poi["pathToVR"] + '"><img class="VR" src="img/icons/VR.svg"></a>'+
